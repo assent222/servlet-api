@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app.xsd">
+
+    <context-param>
+        <param-name>global-parameter</param-name>
+        <param-value>param_hello-value</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>map</servlet-name>
+        <servlet-class>pkk.learn.servlet.ServletListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>map</servlet-name>
+        <url-pattern>/map</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>pkk.learn.servlet.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>local-parameter</param-name>
+            <param-value>RED</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>helloworld</servlet-name>
+        <servlet-class>pkk.learn.servlet.HelloWorldServlet</servlet-class>
+        <init-param>
+            <param-name>local-parameter</param-name>
+            <param-value>BLUE</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloworld</servlet-name>
+        <url-pattern>/helloworld</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>filterRed</filter-name>
+        <filter-class>pkk.learn.servlet.MyFilterRed</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filterRed</filter-name>
+        <servlet-name>hello</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>filterRed</filter-name>
+        <servlet-name>helloworld</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>filterBlue</filter-name>
+        <filter-class>pkk.learn.servlet.MyFilterBlue</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filterBlue</filter-name>
+        <servlet-name>helloworld</servlet-name>
+    </filter-mapping>
+</web-app>
